@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "group": "iron_backpack_dye",
+  "input": "#nemos_backpacks:iron_backpacks",
+  "material": "minecraft:lime_dye",
+  "result": {
+    "id": "nemos_backpacks:lime_iron_backpack"
+  }
+}

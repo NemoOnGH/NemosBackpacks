@@ -1,0 +1,21 @@
+{
+  "values": [
+    "nemos_backpacks:backpack",
+    "nemos_backpacks:white_backpack",
+    "nemos_backpacks:light_gray_backpack",
+    "nemos_backpacks:gray_backpack",
+    "nemos_backpacks:black_backpack",
+    "nemos_backpacks:brown_backpack",
+    "nemos_backpacks:red_backpack",
+    "nemos_backpacks:orange_backpack",
+    "nemos_backpacks:yellow_backpack",
+    "nemos_backpacks:lime_backpack",
+    "nemos_backpacks:green_backpack",
+    "nemos_backpacks:cyan_backpack",
+    "nemos_backpacks:light_blue_backpack",
+    "nemos_backpacks:blue_backpack",
+    "nemos_backpacks:purple_backpack",
+    "nemos_backpacks:magenta_backpack",
+    "nemos_backpacks:pink_backpack"
+  ]
+}

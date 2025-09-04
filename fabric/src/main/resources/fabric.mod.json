@@ -16,10 +16,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.devnemo.nemos.examplemod.FabricExampleMod"
+            "com.devnemo.nemos.backpacks.FabricNemosBackpacks"
         ],
         "fabric-datagen": [
-            "com.devnemo.nemos.examplemod.DataGenerator"
+            "com.devnemo.nemos.backpacks.DataGenerator"
         ]
     },
     "mixins": [

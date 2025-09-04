@@ -1,14 +1,14 @@
-![Mod](https://github.com/NemoNotFound/NemoNotFound/blob/master/resources/minecraft_projects/titles/png/nemos_.png?raw=true)
+![Nemo's Backpacks](https://github.com/NemoNotFound/NemoNotFound/blob/master/resources/minecraft_projects/titles/png/nemos_backpacks.png?raw=true)
 <br><br>
 
 ## Description
 ...
 
-For detailed information, check out the [wiki](https://wiki.devnemo.com/projects/minecraft-mods/nemos-/general).
+For detailed information, check out the [wiki](https://wiki.devnemo.com/projects/minecraft-mods/nemos-backpacks/general).
 
 ## Downloads
-- [CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-)
-- [Modrinth](https://modrinth.com/mod/nemos-)
+- [CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-backpacks)
+- [Modrinth](https://modrinth.com/mod/nemos-backpacks)
 <br><br>
 
 ## Third-Party Components
@@ -21,7 +21,7 @@ For detailed information, check out the [wiki](https://wiki.devnemo.com/projects
 
 ## Support Me
 I love to create mods for Minecraft and wish to live off it one day, so I hope you like what I do. <br>
-Either way feel free to give me your feedback and suggestions, either on my Discord or the [discussions](https://github.com/NemoNotFound/Nemos/discussions/) :)
+Either way feel free to give me your feedback and suggestions, either on my Discord or the [discussions](https://github.com/NemoNotFound/NemosBackpacks/discussions/) :)
 <br><br>
 
 [![ko-fi donation](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.devnemo.com)

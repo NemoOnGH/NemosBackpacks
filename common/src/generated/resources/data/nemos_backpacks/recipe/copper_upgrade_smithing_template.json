@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:cobblestone",
+    "C": "nemos_backpacks:copper_upgrade_smithing_template"
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "nemos_backpacks:copper_upgrade_smithing_template"
+  }
+}

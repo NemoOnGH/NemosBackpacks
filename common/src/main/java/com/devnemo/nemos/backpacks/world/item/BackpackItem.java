@@ -1,0 +1,80 @@
+package com.devnemo.nemos.backpacks.world.item;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+
+import static com.devnemo.nemos.backpacks.Constants.MOD_ID;
+
+public class BackpackItem extends Item {
+
+    private final BackpackMaterial backpackMaterial;
+
+    public BackpackItem(Properties properties, BackpackMaterial backpackMaterial) {
+        super(properties);
+        this.backpackMaterial = backpackMaterial;
+    }
+
+    @Override
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand interactionHand) {
+        ItemStack itemstack = player.getItemInHand(interactionHand);
+        player.openItemGui(itemstack, interactionHand);
+        return InteractionResult.SUCCESS;
+    }
+
+    public static Item getByColorAndBackpackMaterial(DyeColor color, BackpackMaterial backpackMaterial) {
+        var resourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, getItemName(color, backpackMaterial));
+        var item = BuiltInRegistries.ITEM.getValue(resourceLocation);
+
+        if (item == Items.AIR) {
+            throw new IllegalArgumentException("Missing item: " + resourceLocation);
+        }
+
+        return item;
+    }
+
+    public static Item getByBackpackMaterial(BackpackMaterial backpackMaterial) {
+        var resourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, getItemName(backpackMaterial));
+        var item = BuiltInRegistries.ITEM.getValue(resourceLocation);
+
+        if (item == Items.AIR) {
+            throw new IllegalArgumentException("Missing item: " + resourceLocation);
+        }
+
+        return item;
+    }
+
+    private static String getItemName(DyeColor color, BackpackMaterial backpackMaterial) {
+        var materialPrefix = switch (backpackMaterial) {
+            case STRING -> "";
+            case COPPER -> "copper";
+            case IRON -> "iron";
+            case GOLD -> "golden";
+            case DIAMOND -> "diamond";
+            case NETHERITE -> "netherite";
+        };
+
+        return color.getName() + (!materialPrefix.isEmpty() ? "_" + materialPrefix : "") + "_backpack";
+    }
+
+    private static String getItemName(BackpackMaterial backpackMaterial) {
+        var materialPrefix = switch (backpackMaterial) {
+            case STRING -> "";
+            case COPPER -> "copper";
+            case IRON -> "iron";
+            case GOLD -> "golden";
+            case DIAMOND -> "diamond";
+            case NETHERITE -> "netherite";
+        };
+
+        return (!materialPrefix.isEmpty() ? materialPrefix + "_" : "") + "backpack";
+    }
+}
