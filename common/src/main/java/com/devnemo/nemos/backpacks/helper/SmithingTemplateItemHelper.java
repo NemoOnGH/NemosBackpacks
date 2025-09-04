@@ -42,20 +42,50 @@ public class SmithingTemplateItemHelper {
                     resourceLocation("smithing_template.copper_upgrade.additions_slot_description")
             )
     );
+    private static final Component IRON_UPGRADE_APPLIES_TO = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.iron_upgrade.applies_to")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component IRON_UPGRADE_INGREDIENTS = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.iron_upgrade.ingredients")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component IRON_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.iron_upgrade.base_slot_description")
+            )
+    );
+    private static final Component IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.iron_upgrade.additions_slot_description")
+            )
+    );
 
     public static SmithingTemplateItem createCopperUpgradeTemplate(Item.Properties properties) {
-        return new SmithingTemplateItem(COPPER_UPGRADE_APPLIES_TO, COPPER_UPGRADE_INGREDIENTS, COPPER_UPGRADE_BASE_SLOT_DESCRIPTION, COPPER_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createCopperUpgradeIconList(), createCopperUpgradeMaterialList(), properties);
+        return new SmithingTemplateItem(COPPER_UPGRADE_APPLIES_TO, COPPER_UPGRADE_INGREDIENTS, COPPER_UPGRADE_BASE_SLOT_DESCRIPTION, COPPER_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
+    }
+
+    public static SmithingTemplateItem createIronUpgradeTemplate(Item.Properties properties) {
+        return new SmithingTemplateItem(IRON_UPGRADE_APPLIES_TO, IRON_UPGRADE_INGREDIENTS, IRON_UPGRADE_BASE_SLOT_DESCRIPTION, IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
     }
 
     private static ResourceLocation resourceLocation(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    private static List<ResourceLocation> createCopperUpgradeIconList() {
+    private static List<ResourceLocation> createUpgradeIconList() {
         return List.of(EMPTY_SLOT_BACKPACK);
     }
 
-    private static List<ResourceLocation> createCopperUpgradeMaterialList() {
+    private static List<ResourceLocation> createUpgradeMaterialList() {
         return List.of(EMPTY_SLOT_INGOT);
     }
 }

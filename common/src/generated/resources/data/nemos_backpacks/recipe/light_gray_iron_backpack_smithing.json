@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:iron_tool_materials",
+  "base": "nemos_backpacks:light_gray_copper_backpack",
+  "result": {
+    "id": "nemos_backpacks:light_gray_iron_backpack"
+  },
+  "template": "nemos_backpacks:iron_upgrade_smithing_template"
+}

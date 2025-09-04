@@ -123,5 +123,6 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(NemosBackpackItems.PINK_DIAMOND_BACKPACK.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(NemosBackpackItems.PINK_NETHERITE_BACKPACK.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(NemosBackpackItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
     }
 }

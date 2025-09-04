@@ -120,7 +120,8 @@ public class NemosBackpackCreativeModeTabs {
                     PINK_GOLDEN_BACKPACK,
                     PINK_DIAMOND_BACKPACK,
                     PINK_NETHERITE_BACKPACK,
-                    COPPER_UPGRADE_SMITHING_TEMPLATE
+                    COPPER_UPGRADE_SMITHING_TEMPLATE,
+                    IRON_UPGRADE_SMITHING_TEMPLATE
             )
     );
 

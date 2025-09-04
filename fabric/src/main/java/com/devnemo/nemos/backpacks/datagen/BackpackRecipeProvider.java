@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
@@ -49,6 +50,9 @@ public class BackpackRecipeProvider extends FabricRecipeProvider {
 
                 copySmithingUpgradeTemplate(NemosBackpackItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get(), Items.COBBLESTONE);
                 backpackSmithingRecipes(BackpackMaterial.STRING, NemosBackpackItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get(), NemosBackpackItemTags.COPPER_TOOL_MATERIALS, "has_copper_ingot");
+                
+                copySmithingUpgradeTemplate(NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), Items.COPPER_INGOT);
+                backpackSmithingRecipes(BackpackMaterial.COPPER, NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), ItemTags.IRON_TOOL_MATERIALS, "has_iron_ingot");
             }
 
             private void backpackDyeRecipes(TagKey<Item> ingredientTag, BackpackMaterial backpackMaterial, String groupPrefix) {

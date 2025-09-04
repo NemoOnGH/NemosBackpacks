@@ -120,6 +120,12 @@
                 new Item.Properties()
                         .rarity(Rarity.UNCOMMON)
         );
+        public static final Supplier<Item> IRON_UPGRADE_SMITHING_TEMPLATE = registerItem(
+                "iron_upgrade_smithing_template",
+                SmithingTemplateItemHelper::createIronUpgradeTemplate,
+                new Item.Properties()
+                        .rarity(Rarity.UNCOMMON)
+        );
 
         public static void init() {}
 
