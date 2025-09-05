@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:diamond_tool_materials",
+  "base": "nemos_backpacks:orange_golden_backpack",
+  "result": {
+    "id": "nemos_backpacks:orange_diamond_backpack"
+  },
+  "template": "nemos_backpacks:diamond_upgrade_smithing_template"
+}

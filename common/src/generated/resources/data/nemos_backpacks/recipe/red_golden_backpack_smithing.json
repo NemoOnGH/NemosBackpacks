@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "nemos_backpacks:red_iron_backpack",
+  "result": {
+    "id": "nemos_backpacks:red_golden_backpack"
+  },
+  "template": "nemos_backpacks:gold_upgrade_smithing_template"
+}

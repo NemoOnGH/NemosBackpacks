@@ -126,6 +126,18 @@
                 new Item.Properties()
                         .rarity(Rarity.UNCOMMON)
         );
+        public static final Supplier<Item> GOLD_UPGRADE_SMITHING_TEMPLATE = registerItem(
+                "gold_upgrade_smithing_template",
+                SmithingTemplateItemHelper::createGoldUpgradeTemplate,
+                new Item.Properties()
+                        .rarity(Rarity.UNCOMMON)
+        );
+        public static final Supplier<Item> DIAMOND_UPGRADE_SMITHING_TEMPLATE = registerItem(
+                "diamond_upgrade_smithing_template",
+                SmithingTemplateItemHelper::createDiamondUpgradeTemplate,
+                new Item.Properties()
+                        .rarity(Rarity.UNCOMMON)
+        );
 
         public static void init() {}
 

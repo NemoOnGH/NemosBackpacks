@@ -53,6 +53,14 @@ public class BackpackRecipeProvider extends FabricRecipeProvider {
                 
                 copySmithingUpgradeTemplate(NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), Items.COPPER_INGOT);
                 backpackSmithingRecipes(BackpackMaterial.COPPER, NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), ItemTags.IRON_TOOL_MATERIALS, "has_iron_ingot");
+                
+                copySmithingUpgradeTemplate(NemosBackpackItems.GOLD_UPGRADE_SMITHING_TEMPLATE.get(), Items.IRON_INGOT);
+                backpackSmithingRecipes(BackpackMaterial.IRON, NemosBackpackItems.GOLD_UPGRADE_SMITHING_TEMPLATE.get(), ItemTags.GOLD_TOOL_MATERIALS, "has_gold_ingot");
+                
+                copySmithingUpgradeTemplate(NemosBackpackItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE.get(), Items.GOLD_INGOT);
+                backpackSmithingRecipes(BackpackMaterial.GOLD, NemosBackpackItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE.get(), ItemTags.DIAMOND_TOOL_MATERIALS, "has_diamond");
+
+                backpackSmithingRecipes(BackpackMaterial.DIAMOND, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ItemTags.NETHERITE_TOOL_MATERIALS, "has_netherite_ingot");
             }
 
             private void backpackDyeRecipes(TagKey<Item> ingredientTag, BackpackMaterial backpackMaterial, String groupPrefix) {

@@ -68,6 +68,58 @@ public class SmithingTemplateItemHelper {
                     resourceLocation("smithing_template.iron_upgrade.additions_slot_description")
             )
     );
+    private static final Component GOLD_UPGRADE_APPLIES_TO = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.gold_upgrade.applies_to")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component GOLD_UPGRADE_INGREDIENTS = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.gold_upgrade.ingredients")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component GOLD_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.gold_upgrade.base_slot_description")
+            )
+    );
+    private static final Component GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.gold_upgrade.additions_slot_description")
+            )
+    );
+    private static final Component DIAMOND_UPGRADE_APPLIES_TO = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.diamond_upgrade.applies_to")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component DIAMOND_UPGRADE_INGREDIENTS = Component.translatable(
+                    Util.makeDescriptionId(
+                            "item",
+                            resourceLocation("smithing_template.diamond_upgrade.ingredients")
+                    )
+            )
+            .withStyle(DESCRIPTION_FORMAT);
+    private static final Component DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.diamond_upgrade.base_slot_description")
+            )
+    );
+    private static final Component DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
+            Util.makeDescriptionId(
+                    "item",
+                    resourceLocation("smithing_template.diamond_upgrade.additions_slot_description")
+            )
+    );
 
     public static SmithingTemplateItem createCopperUpgradeTemplate(Item.Properties properties) {
         return new SmithingTemplateItem(COPPER_UPGRADE_APPLIES_TO, COPPER_UPGRADE_INGREDIENTS, COPPER_UPGRADE_BASE_SLOT_DESCRIPTION, COPPER_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
@@ -75,6 +127,14 @@ public class SmithingTemplateItemHelper {
 
     public static SmithingTemplateItem createIronUpgradeTemplate(Item.Properties properties) {
         return new SmithingTemplateItem(IRON_UPGRADE_APPLIES_TO, IRON_UPGRADE_INGREDIENTS, IRON_UPGRADE_BASE_SLOT_DESCRIPTION, IRON_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
+    }
+
+    public static SmithingTemplateItem createGoldUpgradeTemplate(Item.Properties properties) {
+        return new SmithingTemplateItem(GOLD_UPGRADE_APPLIES_TO, GOLD_UPGRADE_INGREDIENTS, GOLD_UPGRADE_BASE_SLOT_DESCRIPTION, GOLD_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
+    }
+
+    public static SmithingTemplateItem createDiamondUpgradeTemplate(Item.Properties properties) {
+        return new SmithingTemplateItem(DIAMOND_UPGRADE_APPLIES_TO, DIAMOND_UPGRADE_INGREDIENTS, DIAMOND_UPGRADE_BASE_SLOT_DESCRIPTION, DIAMOND_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList(), properties);
     }
 
     private static ResourceLocation resourceLocation(String path) {

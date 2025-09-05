@@ -2,9 +2,23 @@
 <br><br>
 
 ## Description
-...
+As the name suggests, Nemo’s Backpacks adds backpacks to Minecraft.
+I know there are plenty of backpack mods out there, but I wanted to create my own **vanilla-style** take on them.
 
-For detailed information, check out the [wiki](https://wiki.devnemo.com/projects/minecraft-mods/nemos-backpacks/general).
+With Nemo’s Backpacks you get:
+- 17 colors – all 16 dye variants plus a neutral default design
+- 6 materials, each offering a different size:
+  - Default → 9 slots
+  - Copper → 18 slots
+  - Iron → 27 slots
+  - Gold → 36 slots
+  - Diamond → 45 slots
+  - Netherite → 54 slots
+
+Backpacks can be upgraded using Upgrade Smithing Templates, which can be found throughout the world.
+Upgrades must be applied step by step – you can’t skip directly to higher tiers!
+
+For more details and upgrade template locations, check out the [wiki](https://wiki.devnemo.com/projects/minecraft-mods/nemos-backpacks/general).
 
 ## Downloads
 - [CurseForge](https://curseforge.com/minecraft/mc-mods/nemos-backpacks)

@@ -125,10 +125,20 @@ public class EnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.nemos_backpacks.smithing_template.copper_upgrade.base_slot_description", "Add Default Backpack");
         translationBuilder.add("item.nemos_backpacks.smithing_template.copper_upgrade.ingredients", "Copper Ingot");
         translationBuilder.add(NemosBackpackItems.IRON_UPGRADE_SMITHING_TEMPLATE.get(), "Iron Upgrade");
-        translationBuilder.add("item.nemos_backpacks.smithing_template.iron_upgrade.applies_to", "Default Backpack");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.iron_upgrade.applies_to", "Copper Backpack");
         translationBuilder.add("item.nemos_backpacks.smithing_template.iron_upgrade.additions_slot_description", "Add Iron Ingot");
         translationBuilder.add("item.nemos_backpacks.smithing_template.iron_upgrade.base_slot_description", "Add Default Backpack");
         translationBuilder.add("item.nemos_backpacks.smithing_template.iron_upgrade.ingredients", "Iron Ingot");
+        translationBuilder.add(NemosBackpackItems.GOLD_UPGRADE_SMITHING_TEMPLATE.get(), "Gold Upgrade");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.gold_upgrade.applies_to", "Iron Backpack");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.gold_upgrade.additions_slot_description", "Add Gold Ingot");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.gold_upgrade.base_slot_description", "Add Default Backpack");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.gold_upgrade.ingredients", "Gold Ingot");
+        translationBuilder.add(NemosBackpackItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE.get(), "Diamond Upgrade");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.diamond_upgrade.applies_to", "Gold Backpack");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.diamond_upgrade.additions_slot_description", "Add Diamond Ingot");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.diamond_upgrade.base_slot_description", "Add Default Backpack");
+        translationBuilder.add("item.nemos_backpacks.smithing_template.diamond_upgrade.ingredients", "Diamond Ingot");
 
         translationBuilder.add("itemGroup." + MOD_ID, "Nemo's Backpacks");
     }

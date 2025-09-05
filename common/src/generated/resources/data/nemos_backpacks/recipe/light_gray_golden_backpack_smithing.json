@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:gold_tool_materials",
+  "base": "nemos_backpacks:light_gray_iron_backpack",
+  "result": {
+    "id": "nemos_backpacks:light_gray_golden_backpack"
+  },
+  "template": "nemos_backpacks:gold_upgrade_smithing_template"
+}
