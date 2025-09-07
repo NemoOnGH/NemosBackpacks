@@ -2,18 +2,19 @@ package com.devnemo.nemos.backpacks.world.item;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import static com.devnemo.nemos.backpacks.Constants.MOD_ID;
 
+//TODO: Add item entity
 public class BackpackItem extends Item {
 
     private final BackpackMaterial backpackMaterial;
@@ -25,8 +26,10 @@ public class BackpackItem extends Item {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand interactionHand) {
-        ItemStack itemstack = player.getItemInHand(interactionHand);
-        player.openItemGui(itemstack, interactionHand);
+        var itemstack = player.getItemInHand(interactionHand);
+        //TODO: Open gui
+        player.awardStat(Stats.ITEM_USED.get(this));
+
         return InteractionResult.SUCCESS;
     }
 
