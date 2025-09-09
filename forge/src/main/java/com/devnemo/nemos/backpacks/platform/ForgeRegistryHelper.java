@@ -4,6 +4,9 @@ import com.devnemo.nemos.backpacks.Constants;
 import com.devnemo.nemos.backpacks.ForgeNemosBackpacks;
 import com.devnemo.nemos.backpacks.platform.services.IRegistryHelper;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -80,6 +83,11 @@ public class ForgeRegistryHelper implements IRegistryHelper {
     @Override
     public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String id, MenuType.MenuSupplier<T> menuSupplier) {
         return MENU.register(id, () -> new MenuType<>(menuSupplier, FeatureFlags.DEFAULT_FLAGS));
+    }
+
+    @Override
+    public <M extends AbstractContainerMenu, U extends Screen & MenuAccess<M>> void registerMenuScreen(Supplier<MenuType<M>> menuTypeSupplier, MenuScreens.ScreenConstructor<M, U> screenConstructor) {
+        MenuScreens.register(menuTypeSupplier.get(), screenConstructor);
     }
 
     private static <T> ResourceKey<T> createResourceKey(ResourceKey<Registry<T>> registryResourceKey, String id) {

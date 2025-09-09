@@ -1,6 +1,9 @@
 package com.devnemo.nemos.backpacks.platform.services;
 
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -27,4 +30,5 @@ public interface IRegistryHelper {
     Supplier<KeyMapping> registerKeyMapping(KeyMapping keyMapping);
     Supplier<Holder<Attribute>> registerAttribute(String id, Attribute attribute);
     <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String id, MenuType.MenuSupplier<T> menuSupplier);
+    <M extends AbstractContainerMenu, U extends Screen & MenuAccess<M>> void registerMenuScreen(Supplier<MenuType<M>> menuTypeSupplier, MenuScreens.ScreenConstructor<M, U> screenConstructor);
 }

@@ -5,6 +5,9 @@ import com.devnemo.nemos.backpacks.platform.services.IRegistryHelper;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -86,6 +89,11 @@ public class FabricRegistryHelper implements IRegistryHelper {
         var registeredMenuType = Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(MOD_ID, id), new MenuType<>(menuSupplier, FeatureFlags.DEFAULT_FLAGS));
 
         return () -> registeredMenuType;
+    }
+
+    @Override
+    public <M extends AbstractContainerMenu, U extends Screen & MenuAccess<M>> void registerMenuScreen(Supplier<MenuType<M>> menuTypeSupplier, MenuScreens.ScreenConstructor<M, U> screenConstructor) {
+        MenuScreens.register(menuTypeSupplier.get(), screenConstructor);
     }
 
     private static <T, R extends Registry<? super T>> Supplier<T> registerSupplier(R registry, String id, Supplier<T> object) {

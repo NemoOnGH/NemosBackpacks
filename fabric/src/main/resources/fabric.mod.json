@@ -18,6 +18,9 @@
         "main": [
             "com.devnemo.nemos.backpacks.FabricNemosBackpacks"
         ],
+        "client": [
+            "com.devnemo.nemos.backpacks.FabricClientNemosBackpacks"
+        ],
         "fabric-datagen": [
             "com.devnemo.nemos.backpacks.DataGenerator"
         ]
