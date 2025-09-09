@@ -14,6 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -76,6 +79,13 @@ public class FabricRegistryHelper implements IRegistryHelper {
         var attributeReference = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, ResourceLocation.fromNamespaceAndPath(MOD_ID, id), attribute);
 
         return () -> attributeReference;
+    }
+
+    @Override
+    public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String id, MenuType.MenuSupplier<T> menuSupplier) {
+        var registeredMenuType = Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(MOD_ID, id), new MenuType<>(menuSupplier, FeatureFlags.DEFAULT_FLAGS));
+
+        return () -> registeredMenuType;
     }
 
     private static <T, R extends Registry<? super T>> Supplier<T> registerSupplier(R registry, String id, Supplier<T> object) {

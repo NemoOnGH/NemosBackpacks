@@ -5,6 +5,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -24,4 +26,5 @@ public interface IRegistryHelper {
     CreativeModeTab.Builder createCreativeModeTab();
     Supplier<KeyMapping> registerKeyMapping(KeyMapping keyMapping);
     Supplier<Holder<Attribute>> registerAttribute(String id, Attribute attribute);
+    <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String id, MenuType.MenuSupplier<T> menuSupplier);
 }

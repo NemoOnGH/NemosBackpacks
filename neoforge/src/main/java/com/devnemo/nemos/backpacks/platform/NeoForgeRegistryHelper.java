@@ -12,6 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +22,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import static com.devnemo.nemos.backpacks.NeoForgeNemosBackpacks.MENU;
 
 public class NeoForgeRegistryHelper implements IRegistryHelper {
 
@@ -70,6 +75,11 @@ public class NeoForgeRegistryHelper implements IRegistryHelper {
         var deferredHolder = NeoForgeNemosBackpacks.ATTRIBUTE.register(id, () -> attribute);
 
         return () -> deferredHolder;
+    }
+
+    @Override
+    public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String id, MenuType.MenuSupplier<T> menuSupplier) {
+        return MENU.register(id, () -> new MenuType<>(menuSupplier, FeatureFlags.DEFAULT_FLAGS));
     }
 
     private static <T> ResourceKey<T> createResourceKey(ResourceKey<Registry<T>> registryResourceKey, String id) {

@@ -11,40 +11,40 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: register menu
 public class BackpackMenu extends AbstractContainerMenu {
 
     private final Container container;
     private final int containerRows;
 
     public static BackpackMenu defaultBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.DEFAULT_BACKPACK, containerId, playerInventory, 1);
+        return new BackpackMenu(NemosBackpackMenuTypes.DEFAULT_BACKPACK.get(), containerId, playerInventory, 1);
     }
 
     public static BackpackMenu copperBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.COPPER_BACKPACK, containerId, playerInventory, 2);
+        return new BackpackMenu(NemosBackpackMenuTypes.COPPER_BACKPACK.get(), containerId, playerInventory, 2);
     }
 
     public static BackpackMenu ironBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.IRON_BACKPACK, containerId, playerInventory, 3);
+        return new BackpackMenu(NemosBackpackMenuTypes.IRON_BACKPACK.get(), containerId, playerInventory, 3);
     }
 
     public static BackpackMenu goldenBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.GOLDEN_BACKPACK, containerId, playerInventory, 4);
+        return new BackpackMenu(NemosBackpackMenuTypes.GOLDEN_BACKPACK.get(), containerId, playerInventory, 4);
     }
 
     public static BackpackMenu diamondBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.DIAMOND_BACKPACK, containerId, playerInventory, 5);
+        return new BackpackMenu(NemosBackpackMenuTypes.DIAMOND_BACKPACK.get(), containerId, playerInventory, 5);
     }
 
     public static BackpackMenu netheriteBackpack(int containerId, Inventory playerInventory) {
-        return new BackpackMenu(NemosBackpackMenuTypes.NETHERITE_BACKPACK, containerId, playerInventory, 6);
+        return new BackpackMenu(NemosBackpackMenuTypes.NETHERITE_BACKPACK.get(), containerId, playerInventory, 6);
     }
 
     private BackpackMenu(MenuType<?> type, int containerId, Inventory playerInventory, int rows) {
         this(type, containerId, playerInventory, new SimpleContainer(9 * rows), rows);
     }
 
+    //TODO: Refactoring
     public BackpackMenu(@Nullable MenuType<?> menuType, int containerId, Inventory playerInventory, Container container, int rows) {
         super(menuType, containerId);
         checkContainerSize(container, rows * 9);
