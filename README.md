@@ -1,3 +1,5 @@
+# Nemo's Backpacks
+
 ## Description
 As the name suggests, Nemo’s Backpacks adds backpacks to Minecraft.
 I know there are plenty of backpack mods out there, but I wanted to create my own **vanilla-style** take on them.
@@ -32,7 +34,7 @@ For more details and upgrade template locations, check out the [wiki](https://wi
 
 ## Support Me
 I love to create mods for Minecraft and wish to live off it one day, so I hope you like what I do. <br>
-Either way feel free to give me your feedback and suggestions, either on my Discord or the [discussions](https://github.com/NemoNotFound/NemosBackpacks/discussions/) :)
+Either way feel free to give me your feedback and suggestions, either on my Discord or the [discussions](https://github.com/NemoOnGH/NemosBackpacks/discussions/) :)
 <br><br>
 
 [![ko-fi donation](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.devnemo.com)
