@@ -17,7 +17,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        valueLookupBuilder(NemosBackpackItemTags.BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.BACKPACKS)
                 .add(NemosBackpackItems.BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_BACKPACK.get())
@@ -36,7 +36,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.COPPER_BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.COPPER_BACKPACKS)
                 .add(NemosBackpackItems.COPPER_BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_COPPER_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_COPPER_BACKPACK.get())
@@ -55,7 +55,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_COPPER_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_COPPER_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.IRON_BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.IRON_BACKPACKS)
                 .add(NemosBackpackItems.IRON_BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_IRON_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_IRON_BACKPACK.get())
@@ -74,7 +74,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_IRON_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_IRON_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.GOLDEN_BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.GOLDEN_BACKPACKS)
                 .add(NemosBackpackItems.GOLDEN_BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_GOLDEN_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_GOLDEN_BACKPACK.get())
@@ -93,7 +93,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_GOLDEN_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_GOLDEN_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.DIAMOND_BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.DIAMOND_BACKPACKS)
                 .add(NemosBackpackItems.DIAMOND_BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_DIAMOND_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_DIAMOND_BACKPACK.get())
@@ -112,7 +112,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_DIAMOND_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_DIAMOND_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.NETHERITE_BACKPACKS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.NETHERITE_BACKPACKS)
                 .add(NemosBackpackItems.NETHERITE_BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_NETHERITE_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_NETHERITE_BACKPACK.get())
@@ -131,7 +131,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(NemosBackpackItems.MAGENTA_NETHERITE_BACKPACK.get())
                 .add(NemosBackpackItems.PINK_NETHERITE_BACKPACK.get());
 
-        valueLookupBuilder(NemosBackpackItemTags.COPPER_TOOL_MATERIALS)
+        getOrCreateTagBuilder(NemosBackpackItemTags.COPPER_TOOL_MATERIALS)
                 .add(Items.COPPER_INGOT);
     }
 }
