@@ -1,27 +1,26 @@
 package com.devnemo.nemos.backpacks.world.item;
 
 import com.devnemo.nemos.backpacks.world.inventory.BackpackMenu;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static com.devnemo.nemos.backpacks.Constants.MOD_ID;
 
-//TODO: Add item entity
 public class BackpackItem extends Item {
 
-    private static final Component TITLE = Component.translatable("container.backpack");
+    private static final Component TITLE = Component.translatable(MOD_ID + ".container.backpack");
     private final BackpackMaterial backpackMaterial;
-
 
     public BackpackItem(Properties properties, BackpackMaterial backpackMaterial) {
         super(properties);
@@ -30,28 +29,54 @@ public class BackpackItem extends Item {
 
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand interactionHand) {
-        var itemstack = player.getItemInHand(interactionHand);
-        //TODO: Open gui
-        player.openMenu(createScreenHandlerFactory());
+        player.openMenu(createScreenHandlerFactory(player, interactionHand));
         player.awardStat(Stats.ITEM_USED.get(this));
 
         return InteractionResult.SUCCESS;
     }
 
-    //TODO: Testing, add filled container
     @Nullable
-    public MenuProvider createScreenHandlerFactory() {
+    public MenuProvider createScreenHandlerFactory(Player player, @NotNull InteractionHand interactionHand) {
+        var components = player.getItemInHand(interactionHand).getComponents();
+        var itemContainerContents = components.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        var slotCountPerRow = 9;
+        var container = new SimpleContainer(slotCountPerRow * getRowCount());
+        var items = itemContainerContents.stream().toList();
+
+        for (int i = 0; i < items.size(); i++) {
+            container.setItem(i, items.get(i));
+        }
+
         return new SimpleMenuProvider(
-                (syncId, playerInventory, player) -> switch (backpackMaterial) {
-                    case STRING -> BackpackMenu.defaultBackpack(syncId, playerInventory);
-                    case COPPER -> BackpackMenu.copperBackpack(syncId, playerInventory);
-                    case IRON -> BackpackMenu.ironBackpack(syncId, playerInventory);
-                    case GOLD -> BackpackMenu.goldenBackpack(syncId, playerInventory);
-                    case DIAMOND -> BackpackMenu.diamondBackpack(syncId, playerInventory);
-                    case NETHERITE -> BackpackMenu.netheriteBackpack(syncId, playerInventory);
+                (syncId, playerInventory, player1) -> switch (backpackMaterial) {
+                    case STRING -> BackpackMenu.defaultBackpack(syncId, playerInventory, container);
+                    case COPPER -> BackpackMenu.copperBackpack(syncId, playerInventory, container);
+                    case IRON -> BackpackMenu.ironBackpack(syncId, playerInventory, container);
+                    case GOLD -> BackpackMenu.goldenBackpack(syncId, playerInventory, container);
+                    case DIAMOND -> BackpackMenu.diamondBackpack(syncId, playerInventory, container);
+                    case NETHERITE -> BackpackMenu.netheriteBackpack(syncId, playerInventory, container);
                 },
                 TITLE
         );
+    }
+
+    @Override
+    public void onDestroyed(ItemEntity itemEntity) {
+        var itemContainerContents = this.components().getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+
+        itemEntity.getItem().set(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        ItemUtils.onContainerDestroyed(itemEntity, itemContainerContents.nonEmptyItemsCopy());
+    }
+
+    private int getRowCount() {
+        return switch (backpackMaterial) {
+            case STRING -> 1;
+            case COPPER -> 2;
+            case IRON -> 3;
+            case GOLD -> 4;
+            case DIAMOND -> 5;
+            case NETHERITE -> 6;
+        };
     }
 
     public static Item getByColorAndBackpackMaterial(DyeColor color, BackpackMaterial backpackMaterial) {

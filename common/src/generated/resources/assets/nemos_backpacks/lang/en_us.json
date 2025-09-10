@@ -121,5 +121,6 @@
   "item.nemos_backpacks.yellow_golden_backpack": "Yellow Golden Backpack",
   "item.nemos_backpacks.yellow_iron_backpack": "Yellow Iron Backpack",
   "item.nemos_backpacks.yellow_netherite_backpack": "Yellow Netherite Backpack",
-  "itemGroup.nemos_backpacks": "Nemo's Backpacks"
+  "itemGroup.nemos_backpacks": "Nemo's Backpacks",
+  "nemos_backpacks.container.backpack": "Backpack"
 }

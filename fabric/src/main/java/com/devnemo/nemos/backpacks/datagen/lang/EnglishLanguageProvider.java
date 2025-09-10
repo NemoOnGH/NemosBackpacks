@@ -141,5 +141,6 @@ public class EnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.nemos_backpacks.smithing_template.diamond_upgrade.ingredients", "Diamond Ingot");
 
         translationBuilder.add("itemGroup." + MOD_ID, "Nemo's Backpacks");
+        translationBuilder.add(MOD_ID + ".container.backpack", "Backpack");
     }
 }
