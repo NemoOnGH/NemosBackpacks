@@ -2,4 +2,4 @@
 
 ## Additions
 - Added normal, copper, iron, golden, diamond and netherite backpacks in all colors
-- Added Copper, Iron, Golden & Diamond Upgrade Smithin Templates
+- Added Copper, Iron, Golden & Diamond Upgrade Smithing Templates

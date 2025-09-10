@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import org.jetbrains.annotations.NotNull;
@@ -95,7 +94,7 @@ public class BackpackMenu extends AbstractContainerMenu {
 
         for (int rowIndex = 0; rowIndex < this.containerRows; rowIndex++) {
             for (int slotIndex = 0; slotIndex < slotCountPerRow; slotIndex++) {
-                this.addSlot(new Slot(container, slotIndex + rowIndex * slotCountPerRow, xOffset + slotIndex * yOffset, yOffset + rowIndex * yOffset));
+                this.addSlot(new BackpackSlot(container, slotIndex + rowIndex * slotCountPerRow, xOffset + slotIndex * yOffset, yOffset + rowIndex * yOffset));
             }
         }
     }
@@ -156,10 +155,6 @@ public class BackpackMenu extends AbstractContainerMenu {
         var backpackItemStack = player.getItemInHand(player.getUsedItemHand());
 
         backpackItemStack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(containerItems));
-    }
-
-    public Container getContainer() {
-        return this.container;
     }
 
     public int getRowCount() {
