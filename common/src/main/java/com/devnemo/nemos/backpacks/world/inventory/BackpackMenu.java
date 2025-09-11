@@ -1,7 +1,9 @@
 package com.devnemo.nemos.backpacks.world.inventory;
 
+import com.devnemo.nemos.backpacks.world.item.BackpackItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -152,9 +154,19 @@ public class BackpackMenu extends AbstractContainerMenu {
             containerItems.add(container.getItem(i));
         }
 
-        var backpackItemStack = player.getItemInHand(player.getUsedItemHand());
+        var backpackItemStack = getBackpackItemInHand(player);
 
         backpackItemStack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(containerItems));
+    }
+
+    private ItemStack getBackpackItemInHand(Player player) {
+        var itemInMainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+
+        if (itemInMainHand.getItem() instanceof BackpackItem) {
+            return itemInMainHand;
+        }
+
+        return player.getItemInHand(InteractionHand.OFF_HAND);
     }
 
     public int getRowCount() {
