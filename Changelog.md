@@ -1,5 +1,4 @@
-# Changelog v1.0
+# Changelog v1.0.1
 
-## Additions
-- Added normal, copper, iron, golden, diamond and netherite backpacks in all colors
-- Added Copper, Iron, Golden & Diamond Upgrade Smithing Templates
+## Fixes
+- Fixed an issue where items were sometimes stored in the wrong item, which caused items to vanish.
