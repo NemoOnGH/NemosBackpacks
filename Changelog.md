@@ -1,4 +1,4 @@
-# Changelog v1.0.1
+# Changelog v1.0.2
 
 ## Fixes
-- Fixed an issue where items were sometimes stored in the wrong item, which caused items to vanish.
+- Added workaround for an issue where items were sometimes stored in the wrong item, which caused items to vanish or duplicate.

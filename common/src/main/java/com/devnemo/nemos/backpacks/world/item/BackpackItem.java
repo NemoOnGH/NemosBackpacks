@@ -37,7 +37,8 @@ public class BackpackItem extends Item {
 
     @Nullable
     public MenuProvider createScreenHandlerFactory(Player player, @NotNull InteractionHand interactionHand) {
-        var components = player.getItemInHand(interactionHand).getComponents();
+        var itemStack = player.getItemInHand(interactionHand);
+        var components = itemStack.getComponents();
         var itemContainerContents = components.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
         var slotCountPerRow = 9;
         var container = new SimpleContainer(slotCountPerRow * getRowCount());
@@ -49,7 +50,7 @@ public class BackpackItem extends Item {
 
         return new SimpleMenuProvider(
                 (syncId, playerInventory, player1) -> switch (backpackMaterial) {
-                    case STRING -> BackpackMenu.defaultBackpack(syncId, playerInventory, container);
+                    case STRING -> BackpackMenu.defaultBackpack(syncId, playerInventory, itemStack, container);
                     case COPPER -> BackpackMenu.copperBackpack(syncId, playerInventory, container);
                     case IRON -> BackpackMenu.ironBackpack(syncId, playerInventory, container);
                     case GOLD -> BackpackMenu.goldenBackpack(syncId, playerInventory, container);
