@@ -51,11 +51,11 @@ public class BackpackItem extends Item {
         return new SimpleMenuProvider(
                 (syncId, playerInventory, player1) -> switch (backpackMaterial) {
                     case STRING -> BackpackMenu.defaultBackpack(syncId, playerInventory, itemStack, container);
-                    case COPPER -> BackpackMenu.copperBackpack(syncId, playerInventory, container);
-                    case IRON -> BackpackMenu.ironBackpack(syncId, playerInventory, container);
-                    case GOLD -> BackpackMenu.goldenBackpack(syncId, playerInventory, container);
-                    case DIAMOND -> BackpackMenu.diamondBackpack(syncId, playerInventory, container);
-                    case NETHERITE -> BackpackMenu.netheriteBackpack(syncId, playerInventory, container);
+                    case COPPER -> BackpackMenu.copperBackpack(syncId, playerInventory, itemStack, container);
+                    case IRON -> BackpackMenu.ironBackpack(syncId, playerInventory, itemStack, container);
+                    case GOLD -> BackpackMenu.goldenBackpack(syncId, playerInventory, itemStack, container);
+                    case DIAMOND -> BackpackMenu.diamondBackpack(syncId, playerInventory, itemStack, container);
+                    case NETHERITE -> BackpackMenu.netheriteBackpack(syncId, playerInventory, itemStack, container);
                 },
                 TITLE
         );
