@@ -1,9 +1,7 @@
 package com.devnemo.nemos.backpacks.world.inventory;
 
-import com.devnemo.nemos.backpacks.world.item.BackpackItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -22,13 +20,15 @@ public class BackpackMenu extends AbstractContainerMenu {
 
     private final Container container;
     private final int containerRows;
+    private final ItemStack itemStack;
+    private final Inventory playerInventory;
 
     public static BackpackMenu defaultBackpack(int containerId, Inventory playerInventory) {
         return new BackpackMenu(NemosBackpackMenuTypes.DEFAULT_BACKPACK.get(), containerId, playerInventory, 1);
     }
 
-    public static BackpackMenu defaultBackpack(int containerId, Inventory playerInventory, Container container) {
-        return new BackpackMenu(NemosBackpackMenuTypes.DEFAULT_BACKPACK.get(), containerId, playerInventory, container, 1);
+    public static BackpackMenu defaultBackpack(int containerId, Inventory playerInventory, ItemStack itemStack, Container container) {
+        return new BackpackMenu(NemosBackpackMenuTypes.DEFAULT_BACKPACK.get(), containerId, playerInventory, itemStack, container, 1);
     }
 
     public static BackpackMenu copperBackpack(int containerId, Inventory playerInventory) {
@@ -72,7 +72,25 @@ public class BackpackMenu extends AbstractContainerMenu {
     }
 
     private BackpackMenu(MenuType<?> type, int containerId, Inventory playerInventory, int rows) {
-        this(type, containerId, playerInventory, new SimpleContainer(9 * rows), rows);
+        this(type, containerId, playerInventory, ItemStack.EMPTY, new SimpleContainer(9 * rows), rows);
+    }
+
+    public BackpackMenu(@Nullable MenuType<?> menuType, int containerId, Inventory playerInventory, ItemStack itemStack, Container container, int rows) {
+        super(menuType, containerId);
+        checkContainerSize(container, rows * 9);
+        this.container = container;
+        this.containerRows = rows;
+        this.itemStack = itemStack;
+        this.playerInventory = playerInventory;
+        container.startOpen(playerInventory.player);
+
+        var xOffset = 8;
+        var yOffset = 18;
+        var gapBetweenContainerAndInventory = 13;
+
+        this.addBackpackGrid(container, xOffset, yOffset);
+        int inventoryYOffset = yOffset + this.containerRows * yOffset + gapBetweenContainerAndInventory;
+        this.addStandardInventorySlots(playerInventory, xOffset, inventoryYOffset);
     }
 
     public BackpackMenu(@Nullable MenuType<?> menuType, int containerId, Inventory playerInventory, Container container, int rows) {
@@ -80,6 +98,8 @@ public class BackpackMenu extends AbstractContainerMenu {
         checkContainerSize(container, rows * 9);
         this.container = container;
         this.containerRows = rows;
+        this.itemStack = ItemStack.EMPTY;
+        this.playerInventory = playerInventory;
         container.startOpen(playerInventory.player);
 
         var xOffset = 8;
@@ -103,6 +123,10 @@ public class BackpackMenu extends AbstractContainerMenu {
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
+        if (playerInventory.getItem(index) == itemStack) {
+            return ItemStack.EMPTY;
+        }
+
         var itemstack = ItemStack.EMPTY;
         var slot = this.slots.get(index);
 
@@ -125,6 +149,8 @@ public class BackpackMenu extends AbstractContainerMenu {
             }
         }
 
+        storeBackpackItems();
+
         return itemstack;
     }
 
@@ -133,40 +159,44 @@ public class BackpackMenu extends AbstractContainerMenu {
         return this.container.stillValid(player);
     }
 
+    //TODO: Find better solution for workaround
     @Override
     public void clicked(int slotId, int button, @NotNull ClickType clickType, @NotNull Player player) {
+        var containerSize = container.getContainerSize();
+        var playerInventoryContainerSize = 27;
+        var hotbarSize = 9;
+        var hotbarStartIndex = containerSize + playerInventoryContainerSize;
+        var hotbarEndIndex = hotbarStartIndex + hotbarSize - 1;
+        var isSlotIdWithinHotbarBounds = slotId >= hotbarStartIndex && slotId <= hotbarEndIndex;
+
+        if (
+                (isSlotIdWithinHotbarBounds && playerInventory.getItem(slotId - containerSize - playerInventoryContainerSize) == itemStack) ||
+                        (clickType.equals(ClickType.SWAP) && playerInventory.getItem(button) == itemStack)
+        ) {
+            return;
+        }
+
         super.clicked(slotId, button, clickType, player);
 
-        storeBackpackItems(player);
+        storeBackpackItems();
     }
+
 
     @Override
     public void removed(@NotNull Player player) {
         super.removed(player);
-        storeBackpackItems(player);
+        storeBackpackItems();
         this.container.stopOpen(player);
     }
 
-    private void storeBackpackItems(Player player) {
+    private void storeBackpackItems() {
         List<ItemStack> containerItems = new ArrayList<>();
 
         for (int i = 0; i < container.getContainerSize(); i++) {
             containerItems.add(container.getItem(i));
         }
 
-        var backpackItemStack = getBackpackItemInHand(player);
-
-        backpackItemStack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(containerItems));
-    }
-
-    private ItemStack getBackpackItemInHand(Player player) {
-        var itemInMainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
-
-        if (itemInMainHand.getItem() instanceof BackpackItem) {
-            return itemInMainHand;
-        }
-
-        return player.getItemInHand(InteractionHand.OFF_HAND);
+        itemStack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(containerItems));
     }
 
     public int getRowCount() {
