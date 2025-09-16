@@ -1,4 +1,6 @@
-# Changelog v1.0.2
+# Changelog v1.1
 
-## Fixes
-- Added workaround for an issue where items were sometimes stored in the wrong item, which caused items to vanish or duplicate.
+## Additions
+- Added quick item storage for backpacks (similar to bundles):
+  - Hold a backpack in your hand and left-click an item to store it.
+  - Hold an item in your hand and left-click a backpack to store it.

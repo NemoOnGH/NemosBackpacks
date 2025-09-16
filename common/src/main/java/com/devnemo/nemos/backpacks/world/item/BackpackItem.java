@@ -5,15 +5,23 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 
 import static com.devnemo.nemos.backpacks.Constants.MOD_ID;
 
@@ -67,6 +75,97 @@ public class BackpackItem extends Item {
 
         itemEntity.getItem().set(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
         ItemUtils.onContainerDestroyed(itemEntity, itemContainerContents.nonEmptyItemsCopy());
+    }
+
+    public boolean overrideStackedOnOther(ItemStack itemStack, Slot slot, @NotNull ClickAction action, @NotNull Player player) {
+        var itemContainerContents = itemStack.get(DataComponents.CONTAINER);
+        var slotItem = slot.getItem();
+
+        if (itemContainerContents == null || action != ClickAction.PRIMARY || slotItem.isEmpty()) {
+            return false;
+        }
+
+        var container = getContainer(itemContainerContents);
+
+        if (tryMoveItem(container, slotItem)) {
+            playInsertSound(player);
+        } else {
+            playInsertFailSound(player);
+        }
+
+        storeItemsIntoBackpack(container, itemStack, player);
+
+        return true;
+
+    }
+
+    public boolean overrideOtherStackedOnMe(ItemStack itemStack, @NotNull ItemStack other, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player, @NotNull SlotAccess access) {
+        var itemContainerContents = itemStack.get(DataComponents.CONTAINER);
+
+        if (action != ClickAction.PRIMARY || other.isEmpty() || itemContainerContents == null) {
+            return false;
+        }
+
+        var container = getContainer(itemContainerContents);
+
+        if (slot.allowModification(player) && tryMoveItem(container, other)) {
+            playInsertSound(player);
+        } else {
+            playInsertFailSound(player);
+        }
+
+        storeItemsIntoBackpack(container, itemStack, player);
+
+        return true;
+    }
+
+    private SimpleContainer getContainer(ItemContainerContents itemContainerContents) {
+        var slotCountPerRow = 9;
+        var container = new SimpleContainer(slotCountPerRow * getRowCount());
+        var items = itemContainerContents.stream().toList();
+
+        for (int i = 0; i < items.size(); i++) {
+            container.setItem(i, items.get(i));
+        }
+
+        return container;
+    }
+
+    private boolean tryMoveItem(SimpleContainer container, ItemStack itemToMove) {
+        var remainingStack = container.addItem(itemToMove);
+        var itemWasMoved = remainingStack.isEmpty() || remainingStack.getCount() != itemToMove.getCount();
+
+        if (!itemWasMoved) {
+            return false;
+        }
+
+        itemToMove.setCount(remainingStack.getCount());
+
+        return true;
+    }
+
+    private void playInsertSound(Entity entity) {
+        entity.playSound(SoundEvents.BUNDLE_INSERT, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+    }
+
+    private void playInsertFailSound(Entity entity) {
+        entity.playSound(SoundEvents.BUNDLE_INSERT_FAIL, 1.0F, 1.0F);
+    }
+
+    private void storeItemsIntoBackpack(SimpleContainer container, ItemStack backpack, Player player) {
+        var containerItems = new ArrayList<ItemStack>();
+
+        for (int i = 0; i < container.getContainerSize(); i++) {
+            containerItems.add(container.getItem(i));
+        }
+
+        backpack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(containerItems));
+        this.broadcastChangesOnContainerMenu(player);
+    }
+
+    private void broadcastChangesOnContainerMenu(Player player) {
+        AbstractContainerMenu abstractContainerMenu = player.containerMenu;
+        abstractContainerMenu.slotsChanged(player.getInventory());
     }
 
     private int getRowCount() {
