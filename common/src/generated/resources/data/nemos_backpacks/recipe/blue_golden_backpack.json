@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "golden_backpack_dye",
-  "input": "#nemos_backpacks:golden_backpacks",
+  "input": "#nemos_backpacks:backpacks/golden",
   "material": "minecraft:blue_dye",
   "result": {
     "id": "nemos_backpacks:blue_golden_backpack"

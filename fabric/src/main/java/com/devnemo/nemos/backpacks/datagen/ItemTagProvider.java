@@ -18,6 +18,14 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         valueLookupBuilder(NemosBackpackItemTags.BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.DEFAULT_BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.COPPER_BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.IRON_BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.GOLDEN_BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.DIAMOND_BACKPACKS)
+                .forceAddTag(NemosBackpackItemTags.NETHERITE_BACKPACKS);
+
+        valueLookupBuilder(NemosBackpackItemTags.DEFAULT_BACKPACKS)
                 .add(NemosBackpackItems.BACKPACK.get())
                 .add(NemosBackpackItems.WHITE_BACKPACK.get())
                 .add(NemosBackpackItems.LIGHT_GRAY_BACKPACK.get())

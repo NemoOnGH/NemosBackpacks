@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "iron_backpack_dye",
-  "input": "#nemos_backpacks:iron_backpacks",
+  "input": "#nemos_backpacks:backpacks/iron",
   "material": "minecraft:orange_dye",
   "result": {
     "id": "nemos_backpacks:orange_iron_backpack"

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "diamond_backpack_dye",
-  "input": "#nemos_backpacks:diamond_backpacks",
+  "input": "#nemos_backpacks:backpacks/diamond",
   "material": "minecraft:green_dye",
   "result": {
     "id": "nemos_backpacks:green_diamond_backpack"

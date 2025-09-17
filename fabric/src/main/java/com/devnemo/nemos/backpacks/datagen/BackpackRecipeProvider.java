@@ -41,7 +41,7 @@ public class BackpackRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy("has_leather", this.has(Items.LEATHER))
                         .save(this.output);
 
-                backpackDyeRecipes(NemosBackpackItemTags.BACKPACKS, BackpackMaterial.STRING, "");
+                backpackDyeRecipes(NemosBackpackItemTags.DEFAULT_BACKPACKS, BackpackMaterial.STRING, "");
                 backpackDyeRecipes(NemosBackpackItemTags.COPPER_BACKPACKS, BackpackMaterial.COPPER, "copper");
                 backpackDyeRecipes(NemosBackpackItemTags.IRON_BACKPACKS, BackpackMaterial.IRON, "iron");
                 backpackDyeRecipes(NemosBackpackItemTags.GOLDEN_BACKPACKS, BackpackMaterial.GOLD, "golden");

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "backpack_dye",
-  "input": "#nemos_backpacks:backpacks",
+  "input": "#nemos_backpacks:backpacks/default",
   "material": "minecraft:cyan_dye",
   "result": {
     "id": "nemos_backpacks:cyan_backpack"

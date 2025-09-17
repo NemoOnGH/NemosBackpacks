@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#nemos_backpacks:backpacks/default",
+    "#nemos_backpacks:backpacks/copper",
+    "#nemos_backpacks:backpacks/iron",
+    "#nemos_backpacks:backpacks/golden",
+    "#nemos_backpacks:backpacks/diamond",
+    "#nemos_backpacks:backpacks/netherite"
+  ]
+}

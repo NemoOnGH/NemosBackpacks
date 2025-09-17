@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "copper_backpack_dye",
-  "input": "#nemos_backpacks:copper_backpacks",
+  "input": "#nemos_backpacks:backpacks/copper",
   "material": "minecraft:brown_dye",
   "result": {
     "id": "nemos_backpacks:brown_copper_backpack"

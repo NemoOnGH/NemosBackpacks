@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_transmute",
   "category": "equipment",
   "group": "copper_backpack_dye",
-  "input": "#nemos_backpacks:copper_backpacks",
+  "input": "#nemos_backpacks:backpacks/copper",
   "material": "minecraft:white_dye",
   "result": {
     "id": "nemos_backpacks:white_copper_backpack"

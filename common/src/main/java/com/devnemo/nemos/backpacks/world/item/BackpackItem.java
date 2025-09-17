@@ -1,5 +1,6 @@
 package com.devnemo.nemos.backpacks.world.item;
 
+import com.devnemo.nemos.backpacks.tags.NemosBackpackItemTags;
 import com.devnemo.nemos.backpacks.world.inventory.BackpackMenu;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -77,44 +78,34 @@ public class BackpackItem extends Item {
         ItemUtils.onContainerDestroyed(itemEntity, itemContainerContents.nonEmptyItemsCopy());
     }
 
-    public boolean overrideStackedOnOther(ItemStack itemStack, Slot slot, @NotNull ClickAction action, @NotNull Player player) {
-        var itemContainerContents = itemStack.get(DataComponents.CONTAINER);
-        var slotItem = slot.getItem();
-
-        if (itemContainerContents == null || action != ClickAction.PRIMARY || slotItem.isEmpty()) {
-            return false;
-        }
-
-        var container = getContainer(itemContainerContents);
-
-        if (tryMoveItem(container, slotItem)) {
-            playInsertSound(player);
-        } else {
-            playInsertFailSound(player);
-        }
-
-        storeItemsIntoBackpack(container, itemStack, player);
-
-        return true;
-
+    public boolean overrideStackedOnOther(@NotNull ItemStack backpack, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player) {
+        return overrideStackingLogic(backpack, slot.getItem(), slot, false, action, player);
     }
 
-    public boolean overrideOtherStackedOnMe(ItemStack itemStack, @NotNull ItemStack other, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player, @NotNull SlotAccess access) {
-        var itemContainerContents = itemStack.get(DataComponents.CONTAINER);
+    public boolean overrideOtherStackedOnMe(@NotNull ItemStack backpack, @NotNull ItemStack other, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player, @NotNull SlotAccess access) {
+        return overrideStackingLogic(backpack, other, slot, true, action, player);
+    }
 
-        if (action != ClickAction.PRIMARY || other.isEmpty() || itemContainerContents == null) {
+    private boolean overrideStackingLogic(ItemStack backpack, ItemStack other, Slot slot, boolean isSlotModified, ClickAction action, Player player) {
+        if (other.is(NemosBackpackItemTags.BACKPACKS) || action != ClickAction.PRIMARY || other.isEmpty()) {
+            return false;
+        }
+
+        var itemContainerContents = backpack.get(DataComponents.CONTAINER);
+
+        if (itemContainerContents == null) {
             return false;
         }
 
         var container = getContainer(itemContainerContents);
 
-        if (slot.allowModification(player) && tryMoveItem(container, other)) {
+        if ((!isSlotModified || slot.allowModification(player)) && tryMoveItem(container, other)) {
             playInsertSound(player);
         } else {
             playInsertFailSound(player);
         }
 
-        storeItemsIntoBackpack(container, itemStack, player);
+        storeItemsIntoBackpack(container, backpack, player);
 
         return true;
     }
