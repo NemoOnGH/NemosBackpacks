@@ -4,7 +4,5 @@
   "group": "iron_backpack_dye",
   "input": "#nemos_backpacks:iron_backpacks",
   "material": "minecraft:light_gray_dye",
-  "result": {
-    "id": "nemos_backpacks:light_gray_iron_backpack"
-  }
+  "result": "nemos_backpacks:light_gray_iron_backpack"
 }

@@ -3,6 +3,7 @@
   "addition": "#minecraft:netherite_tool_materials",
   "base": "nemos_backpacks:orange_diamond_backpack",
   "result": {
+    "count": 1,
     "id": "nemos_backpacks:orange_netherite_backpack"
   },
   "template": "minecraft:netherite_upgrade_smithing_template"

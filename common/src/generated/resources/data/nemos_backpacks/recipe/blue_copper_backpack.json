@@ -4,7 +4,5 @@
   "group": "copper_backpack_dye",
   "input": "#nemos_backpacks:copper_backpacks",
   "material": "minecraft:blue_dye",
-  "result": {
-    "id": "nemos_backpacks:blue_copper_backpack"
-  }
+  "result": "nemos_backpacks:blue_copper_backpack"
 }

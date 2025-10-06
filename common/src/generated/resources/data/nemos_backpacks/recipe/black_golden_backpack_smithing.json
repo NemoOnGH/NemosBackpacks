@@ -3,6 +3,7 @@
   "addition": "#minecraft:gold_tool_materials",
   "base": "nemos_backpacks:black_iron_backpack",
   "result": {
+    "count": 1,
     "id": "nemos_backpacks:black_golden_backpack"
   },
   "template": "nemos_backpacks:gold_upgrade_smithing_template"

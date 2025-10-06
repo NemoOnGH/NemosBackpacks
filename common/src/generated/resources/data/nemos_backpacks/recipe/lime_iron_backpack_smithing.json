@@ -3,6 +3,7 @@
   "addition": "#minecraft:iron_tool_materials",
   "base": "nemos_backpacks:lime_copper_backpack",
   "result": {
+    "count": 1,
     "id": "nemos_backpacks:lime_iron_backpack"
   },
   "template": "nemos_backpacks:iron_upgrade_smithing_template"

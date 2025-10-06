@@ -3,6 +3,7 @@
   "addition": "#minecraft:diamond_tool_materials",
   "base": "nemos_backpacks:light_blue_golden_backpack",
   "result": {
+    "count": 1,
     "id": "nemos_backpacks:light_blue_diamond_backpack"
   },
   "template": "nemos_backpacks:diamond_upgrade_smithing_template"

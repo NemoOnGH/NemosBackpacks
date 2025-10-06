@@ -4,7 +4,5 @@
   "group": "netherite_backpack_dye",
   "input": "#nemos_backpacks:netherite_backpacks",
   "material": "minecraft:light_gray_dye",
-  "result": {
-    "id": "nemos_backpacks:light_gray_netherite_backpack"
-  }
+  "result": "nemos_backpacks:light_gray_netherite_backpack"
 }

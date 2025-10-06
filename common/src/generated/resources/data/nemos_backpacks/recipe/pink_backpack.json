@@ -4,7 +4,5 @@
   "group": "backpack_dye",
   "input": "#nemos_backpacks:backpacks",
   "material": "minecraft:pink_dye",
-  "result": {
-    "id": "nemos_backpacks:pink_backpack"
-  }
+  "result": "nemos_backpacks:pink_backpack"
 }

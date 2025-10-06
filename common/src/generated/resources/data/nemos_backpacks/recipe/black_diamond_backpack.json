@@ -4,7 +4,5 @@
   "group": "diamond_backpack_dye",
   "input": "#nemos_backpacks:diamond_backpacks",
   "material": "minecraft:black_dye",
-  "result": {
-    "id": "nemos_backpacks:black_diamond_backpack"
-  }
+  "result": "nemos_backpacks:black_diamond_backpack"
 }

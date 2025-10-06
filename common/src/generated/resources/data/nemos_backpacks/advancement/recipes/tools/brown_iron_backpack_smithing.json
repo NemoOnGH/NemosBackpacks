@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nemos_backpacks:brown_iron_backpack_smithing"
+        "recipe": "minecraft:brown_iron_backpack_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nemos_backpacks:brown_iron_backpack_smithing"
+      "minecraft:brown_iron_backpack_smithing"
     ]
   }
 }

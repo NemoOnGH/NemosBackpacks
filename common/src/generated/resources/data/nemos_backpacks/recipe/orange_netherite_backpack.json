@@ -4,7 +4,5 @@
   "group": "netherite_backpack_dye",
   "input": "#nemos_backpacks:netherite_backpacks",
   "material": "minecraft:orange_dye",
-  "result": {
-    "id": "nemos_backpacks:orange_netherite_backpack"
-  }
+  "result": "nemos_backpacks:orange_netherite_backpack"
 }

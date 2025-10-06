@@ -3,6 +3,7 @@
   "addition": "#nemos_backpacks:copper_tool_materials",
   "base": "nemos_backpacks:lime_backpack",
   "result": {
+    "count": 1,
     "id": "nemos_backpacks:lime_copper_backpack"
   },
   "template": "nemos_backpacks:copper_upgrade_smithing_template"

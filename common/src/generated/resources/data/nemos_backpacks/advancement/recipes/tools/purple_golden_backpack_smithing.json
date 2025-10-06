@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nemos_backpacks:purple_golden_backpack_smithing"
+        "recipe": "minecraft:purple_golden_backpack_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nemos_backpacks:purple_golden_backpack_smithing"
+      "minecraft:purple_golden_backpack_smithing"
     ]
   }
 }
